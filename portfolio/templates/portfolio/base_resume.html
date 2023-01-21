@@ -1,0 +1,185 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--CSS Styles -->
+    <link rel="stylesheet" href="{% static 'portfolio/style.css' %}">
+
+
+    <!-- Favicons -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="media\images\background\icons8-programmer-64.png"
+    />
+    
+
+    <!-- Animate CSS CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <title>{% block title %}Erfan | Developer{% endblock %}</title>
+
+
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    {% block sidebar %}
+    <nav>
+      {% block name %}
+        <h1>Erfan Mahmoodi</h1>
+        {% endblock %}
+        <ul class="navigation">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/resume" class="nav-link">Resume</a></li>
+          <li><a href="/reviews" class="nav-link">Reviews</a></li>
+        </ul>
+        <button class="burger-menu" id="burger-menu">
+          <ion-icon class="bars" name="menu-outline"></ion-icon>
+        </button>
+  </nav>
+
+  {% endblock %}
+
+  <!-- SKILSS -->
+  {% block skills %}
+  <section class="skills" id="skills">
+    <h2 class="skill-header">My Top Skills</h2>
+
+    <div class="skills-wrapper">
+      <div class="first-set animate__animated animate__pulse">
+        <img
+          src="media\skills\icons8-python.svg"
+          alt=""
+          loading="lazy"
+          class="icon icon-card"
+        />
+        <img
+          src="media\skills\icons8-python.svg"
+          alt=""
+          loading="lazy"
+          class="icon icon-card"
+        />
+        <img
+          src="media\skills\icons8-python.svg"
+          alt=""
+          loading="lazy"
+          class="icon icon-card"
+        />
+      </div>
+
+      <div class="second-set animate__animated animate__pulse">
+        <img
+          src="media\skills\icons8-python.svg"
+          alt=""
+          loading="lazy"
+          class="icon icon-card"
+        />
+        <img
+          src="media\skills\icons8-python.svg"
+          alt=""
+          loading="lazy"
+          class="icon icon-card"
+        />
+        <img
+          src="media\skills\icons8-python.svg"
+          alt=""
+          loading="lazy"
+          class="icon icon-card"
+        />
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}
+
+
+  <!-- Resume downlaod -->
+    {% block resume %}
+    <section class="resume" id="resume">
+      <div class="resume-wrapper">
+        <div class="resume-card">
+          <a href="media\resume\Erfan_Mahmoodi.pdf" download="Erfan Mahmoodi Resume.pdf"
+            ><button class="resume-btn">Download Resume</button></a
+          >
+        </div>
+      </div>
+
+    </section>
+    {% endblock %}
+
+  {% block socials %}
+    <div class="socials">
+      <a href="mailto:mahmoodierfan7@gmail.com" target="_blank"
+        ><img
+          src="/media/portfolio/static/images/socials/icons8-mail.svg"
+          alt="Email"
+          loading="lazy"
+          class="socicon"
+      /></a>
+      <a href="https://www.linkedin.com/in/erfan-mahmoodi-590563162/" target="_blank"
+        ><img
+          src="/media/portfolio/static/images/socials/icons8-linkedin-circled_sjZc7YT.svg"
+          alt="Linkedin"
+          loading="lazy"
+          class="socicon"
+      /></a>
+      <a href="https://github.com/erfan231" target="_blank"
+        ><img src="/media/portfolio/static/images/socials/icons8-github_Ii1Jr3i.svg"
+         alt="Github" 
+         class="socicon"
+      /></a>
+      </div>
+      {% endblock %}
+
+    <!-- Messages -->
+
+    {% block messages %}
+    {% if messages %}
+		<div class="messages">
+		{% for message in messages %}
+			<div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>
+				{{ message }}
+			</div>
+		{% endfor %}
+		</div>
+	{% endif %}
+
+  {% endblock %}
+
+
+    <!-- Reviews -->
+    {% block reviews %}
+ 
+
+        {% endblock %}
+      <!-- Footer -->
+
+      {% block footer %}
+      <footer>
+        <p class="copy">&copy; Copyright 2023</p>
+  </footer>
+      {% endblock %}
+
+
+
+
+
+    <!-- icons scripts -->
+    <script
+    type="module"
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+  ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

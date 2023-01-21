@@ -1,0 +1,99 @@
+{% load static %}
+
+    <link rel="stylesheet" href="{% static 'portfolio/style.css' %}">
+
+
+
+    <title>{% block title %}Erfan | Developer{% endblock %}</title>
+
+ 
+ 
+    <body>
+     <!-- Navbar -->
+     {% block sidebar %}
+     <nav>
+      {{about.name}}
+         <ul class="navigation">
+           <li><a href="/" class="nav-link">Home</a></li>
+           <li><a href="/resume" class="nav-link">Resume</a></li>
+           <li><a href="/reviews" class="nav-link">Reviews</a></li>
+         </ul>
+         <button class="burger-menu" id="burger-menu">
+           <ion-icon class="bars" name="menu-outline"></ion-icon>
+         </button>
+   </nav>
+    
+
+   {% endblock %}
+
+ <!-- Slideshow container -->
+ <div class="slideshow-container fade">
+
+    <!-- Full images with numbers and message Info -->
+    {% for review in reviews %}
+    <div class="Containers">
+      <img src="{{review.image.url}}" alt="Review" height="90%" width="90%"> 
+    </div>
+
+
+  
+  
+
+  
+  <!-- The circles/dots -->
+  <div style="text-align:center">
+    <span class="dots" onclick="currentSlide(1)"></span>
+  </div> 
+
+  {% endfor %}
+
+    <!-- Back and forward buttons -->
+    <a class="Back" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="forward" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <br>
+
+  </body>
+  <script>
+    var slidePosition = 1;
+SlideShow(slidePosition);
+
+// forward/Back controls
+function plusSlides(n) {
+  SlideShow(slidePosition += n);
+}
+
+//  images controls
+function currentSlide(n) {
+  SlideShow(slidePosition = n);
+}
+
+function SlideShow(n) {
+  var i;
+  var slides = document.getElementsByClassName("Containers");
+  var circles = document.getElementsByClassName("dots");
+  if (n > slides.length) {slidePosition = 1}
+  if (n < 1) {slidePosition = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < circles.length; i++) {
+      circles[i].className = circles[i].className.replace(" enable", "");
+  }
+  slides[slidePosition-1].style.display = "block";
+  circles[slidePosition-1].className += " enable";
+} 
+  </script>
+
+
+<div class="socials">
+  {% for social in socials %}
+    <a href="{{social.social_info.social_link}}" target="_blank"><img
+        src="{{social.socialImage.url}}"
+        alt="{{social.social_info.social_name}}"
+        loading="lazy"
+        class="socicon"
+    /></a>
+  
+  {% endfor %}
+</div>

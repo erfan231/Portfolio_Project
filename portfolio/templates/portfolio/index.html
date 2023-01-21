@@ -1,0 +1,109 @@
+{% extends 'portfolio/base.html' %}
+{{ form }}
+
+
+{% block title %} {{about.title}}{% endblock %}
+{% block image %}
+<section class="hero" id="about">
+  <img
+    src="{{image.image.url}}"
+    alt="Erfan-Mahmoodi"
+    loading="lazy"
+    class="hero-img"
+  />
+
+{%endblock%}
+
+{% block aboutme %} {{about.about}} {%endblock%}
+
+{% block name %} {{about.name}}{% endblock %}
+   <!-- Projects section -->
+
+  {% block projects %}
+<section class="projects" id="projects">
+    <h2 class="projects-title">Some of my recent live Projects</h2>
+    {% for project in projects %}
+    <div class="projects-container">
+      <div class="project-container project-card">
+        <img
+          src="{{project.image.url}}"
+          alt="project"
+          loading="lazy"
+          class="project-pic"
+        />
+        <h3 class="project-title">{{project.title}}</h3>
+        <p class="project-details">
+          {{project.description}}
+        </p>
+        <a href="{{project.link}}" target="_blank" class="project-link">Check it Out</a>
+      </div>
+      {% empty %}
+      <p>No projects yet</p>
+      {% endfor %}
+    </div>
+  </section>
+    
+  {% endblock %}
+
+  <!-- Contact section -->
+  {% block contact %}
+  <section class="contact" id="contact">
+    <h2>Get In Touch With Me</h2>
+    <div class="contact-form-container">
+      <div class="contact-form">
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="form-control">
+            <label for="name">{{form.name.label}}</label>
+            {{form.name}}
+          </div>
+          <div class="form-control">
+            <label for="email">{{form.email.label}}</label>
+            {{form.email}}
+          </div>
+          <div class="form-control">
+            <label for="message"> {{form.message.label}}</label>
+            {{form.message}}
+            {{form.captcha}}
+          </div>
+          <input
+            type="submit"
+            value="Submit"
+            id="submit-btn"
+            class="submit-btn"
+          />
+        </form>
+      </div>
+    </div>
+  </section>
+  {% endblock %}
+
+
+
+  {% block socials %}
+  <div class="socials">
+  {% for social in socials %}
+    <a href="{{social.social_info.social_link}}" target="_blank"><img
+        src="{{social.socialImage.url}}"
+        alt="{{social.social_info.social_name}}"
+        loading="lazy"
+        class="socicon"
+    /></a>
+  
+  {% endfor %}
+</div>
+{% endblock %}
+
+ 
+
+
+{% block footer %} 
+<footer>
+  <p class="copy">&copy; Copyright {{footer.footer}}</p>
+
+<!-- Footer -->
+</footer>
+
+{% endblock %}
+
+

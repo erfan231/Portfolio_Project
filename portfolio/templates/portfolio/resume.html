@@ -1,0 +1,111 @@
+{% extends 'portfolio/base_resume.html' %}
+{{ form }}
+
+
+{% block title %} {{about.title}}{% endblock %}
+{% block name %} {{about.name}}{% endblock %}
+
+{% block skills %} 
+<h2 class="skill-header">My Top Skills</h2>
+
+{% for skill in skills %}
+<section class="skills" id="skills">
+    <div class="skills-wrapper">
+      <div class="first-set animate__animated animate__pulse">
+        <img
+          src="{{skill.image.url}}"
+          alt="skill.skill"
+          loading="lazy"
+          class="icon icon-card"
+        />
+    </div>
+</div>
+</section>
+    {% empty %}
+    <section class="skills" id="skills">  
+
+      <div class="skills-wrapper">
+        <div class="first-set animate__animated animate__pulse">
+          <img
+            src="media\skills\icons8-python.svg"
+            alt=""
+            loading="lazy"
+            class="icon icon-card"
+          />
+          <img
+            src="media\skills\icons8-python.svg"
+            alt=""
+            loading="lazy"
+            class="icon icon-card"
+          />
+          <img
+            src="media\skills\icons8-python.svg"
+            alt=""
+            loading="lazy"
+            class="icon icon-card"
+          />
+        </div>
+  
+        <div class="second-set animate__animated animate__pulse">
+          <img
+            src="media\skills\icons8-python.svg"
+            alt=""
+            loading="lazy"
+            class="icon icon-card"
+          />
+          <img
+            src="media\skills\icons8-python.svg"
+            alt=""
+            loading="lazy"
+            class="icon icon-card"
+          />
+          <img
+            src="media\skills\icons8-python.svg"
+            alt=""
+            loading="lazy"
+            class="icon icon-card"
+          />
+        </div>
+      </div>
+    </section>
+    {% endfor %}
+    {% endblock %}
+
+
+    {% block resume %}
+    <section class="resume" id="resume">
+        <div class="resume-wrapper">
+          <div class="resume-card">
+            <a href="{{resume.resume.url}}" download="Erfan Mahmoodi Resume.pdf"
+              ><button class="resume-btn">Download Resume</button></a
+            >
+          </div>
+        </div>
+  
+      </section>
+
+      {% endblock %}
+
+      {% block socials %}
+      <div class="socials">
+      {% for social in socials %}
+        <a href="{{social.social_info.social_link}}" target="_blank"><img
+            src="{{social.socialImage.url}}"
+            alt="{{social.social_info.social_name}}"
+            loading="lazy"
+            class="socicon"
+        /></a>
+      
+      {% endfor %}
+    </div>
+    {% endblock %}
+    
+
+{% block footer %} 
+<footer>
+  <p class="copy">&copy; Copyright {{footer.footer}}</p>
+
+<!-- Footer -->
+</footer>
+
+{% endblock %}
